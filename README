@@ -1,4 +1,31 @@
+该课程课表链接为https://pdos.csail.mit.edu/6.828/2020/schedule.html
+中文翻译参考https://xv6.dgs.zone/
+实验总结参考https://juejin.cn/post/7499667840495222799?searchId=2026051421531478C1A0C27758A28BD15F
+课程中文翻译https://www.zhihu.com/column/c_1294282919087964160
+课程中文字幕视频链接https://www.bilibili.com/video/BV1rS4y1n7y1/
+
+这是第一次的学习和实验过程，环境搭建参考课程第一个实验，这里记录我遇到的一些问题和解决办法
+安装实验文档获取实验源码并切换到util分支之后，使用 make qemu 命令构建并运行xv6时，出现了以下报错信息
+
+root@sang-virtual-machine:/learn/MIT_6S081/xv6-labs-2020# make qemu
+***
+*** Error: Couldn't find a riscv64 version of GCC/binutils.
+*** To turn off this error, run 'gmake TOOLPREFIX= ...'.
+***
+gcc    -c -o kernel/entry.o kernel/entry.S
+kernel/entry.S: Assembler messages:
+kernel/entry.S:11: Error: no such instruction: `la sp,stack0'
+kernel/entry.S:12: Error: no such instruction: `li a0,1024*4'
+kernel/entry.S:13: Error: no such instruction: `csrr a1,mhartid'
+kernel/entry.S:14: Error: no such instruction: `addi a1,a1,1'
+kernel/entry.S:15: Error: too many memory references for `mul'
+kernel/entry.S:16: Error: too many memory references for `add'
+kernel/entry.S:20: Error: no such instruction: `j spin'
+make: *** [<builtin>: kernel/entry.o] Error 1
+root@sang-virtual-machine:/learn/MIT_6S081/xv6-labs-2020#
 这是一个开始，将自己的学习练习过程记录下来，学会了创建github项目分支，使用git push命令
+
+
 xv6 is a re-implementation of Dennis Ritchie's and Ken Thompson's Unix
 Version 6 (v6).  xv6 loosely follows the structure and style of v6,
 but is implemented for a modern RISC-V multiprocessor using ANSI C.
